@@ -12,6 +12,25 @@ document.body.appendChild(canvas); //representing canvas in <body>
 let spaceshipX = canvas.width / 2 - 48; // 200 - 48
 let spaceshipY = canvas.height - 96; // 700 - 96
 
+//store fired bullets in array
+let bulletList = [];
+
+function Bullet() {
+  this.x = 0;
+  this.y = 0;
+  this.init = function () {
+    //bullet initialization
+    this.x = spaceshipX + 40; //center
+    this.y = spaceshipY;
+
+    bulletList.push(this);
+  };
+
+  this.update = function () {
+    this.y -= 7; //y-coordinate value of bullet is decremented
+  };
+}
+
 //load images
 let backgroundImage, spaceshipImage, bulletImage, enemyImage, gameOverImage;
 function loadImage() {
@@ -37,32 +56,50 @@ function setupKeyboardListener() {
   document.addEventListener("keydown", function (event) {
     //console.log("what key was pressed?: ", event.keyCode);
     console.log("what key was pressed?: ", event.key);
+    console.log("what key was pressed?: ", event.code);
 
     keysDown[event.key] = true; // key-value
-    //console.log("키다운객체에 들어간 값은?:", keysDown)
+    //console.log("키 다운 객체에 들어간 값은?:", keysDown)
   });
 
   document.addEventListener("keyup", function (event) {
     delete keysDown[event.key];
     console.log("버튼 클릭 후", keysDown);
+
+    if (event.code == "Space") {
+      createBullet();
+    }
   });
+}
+
+function createBullet() {
+  console.log("총알생성!");
+
+  let b = new Bullet(); // create one bullet
+  b.init();
+
+  console.log("새로운 총알 리스트!", bulletList);
 }
 
 function update() {
   // right
-
   if ("ArrowRight" in keysDown) {
     // prevent the ship leaving the canvas
     if (spaceshipX < canvas.width - 96) {
-      spaceshipX += 1; //adjust speed
+      spaceshipX += 5; //adjust speed
     }
   }
   // left
   if ("ArrowLeft" in keysDown) {
     // prevent the ship leaving the canvas
     if (spaceshipX > 0) {
-      spaceshipX -= 1;
+      spaceshipX -= 5;
     }
+  }
+
+  //fire bullet
+  for (let i = 0; i < bulletList.length; i++) {
+    bulletList[i].update();
   }
 }
 
@@ -70,6 +107,10 @@ function update() {
 function render() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); //image, dx, dy, dWidth, dHeight
   ctx.drawImage(spaceshipImage, spaceshipX, spaceshipY); //image, dx, dy
+
+  for (let i = 0; i < bulletList.length; i++) {
+    ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
+  }
 }
 
 function main() {
