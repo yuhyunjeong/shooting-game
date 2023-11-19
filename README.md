@@ -12,3 +12,11 @@
 2. y-coordinate value of bullet is decremented
 3. store fired bullets in array
 4. render with the bullet array
+
+### Enemy
+
+1. randomized enemy location
+2. descend
+3. create one per second
+4. if an enemy reaches the bottom, Game over
+5. if bullets hit the enemies, they disappear and get 1 point

@@ -12,6 +12,8 @@ document.body.appendChild(canvas); //representing canvas in <body>
 let spaceshipX = canvas.width / 2 - 48; // 200 - 48
 let spaceshipY = canvas.height - 96; // 700 - 96
 
+let gameOver = false;
+
 //store fired bullets in array
 let bulletList = [];
 
@@ -28,6 +30,33 @@ function Bullet() {
 
   this.update = function () {
     this.y -= 7; //y-coordinate value of bullet is decremented
+  };
+}
+
+function generateRandomValue(min, max) {
+  let randomNum = Math.floor(Math.random() * (max - min + 1) + min); // randomize
+  return randomNum;
+}
+
+//create enemy
+let enemyList = [];
+
+function Enemy() {
+  this.x = 0;
+  this.y = 0;
+  this.init = function () {
+    this.y = 0; //top
+    this.x = generateRandomValue(0, canvas.width - 64); // x-coordinate value in canvas's width
+
+    enemyList.push(this);
+  };
+  this.update = function () {
+    this.y += 1;
+
+    if (this.y >= canvas.height - 64) {
+      gameOver = true;
+      console.log("game over");
+    }
   };
 }
 
@@ -81,6 +110,14 @@ function createBullet() {
   console.log("새로운 총알 리스트!", bulletList);
 }
 
+function createEnemy() {
+  //create one per second
+  const interval = setInterval(function () {
+    let e = new Enemy();
+    e.init();
+  }, 1000); // The setInterval() method calls a function at specified intervals (in milliseconds). function, times(1000ms = 1 second)
+}
+
 function update() {
   // right
   if ("ArrowRight" in keysDown) {
@@ -101,6 +138,10 @@ function update() {
   for (let i = 0; i < bulletList.length; i++) {
     bulletList[i].update();
   }
+
+  for (let i = 0; i < enemyList.length; i++) {
+    enemyList[i].update();
+  }
 }
 
 //render : draw UI
@@ -111,15 +152,25 @@ function render() {
   for (let i = 0; i < bulletList.length; i++) {
     ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
   }
+
+  for (let i = 0; i < enemyList.length; i++) {
+    ctx.drawImage(enemyImage, enemyList[i].x, enemyList[i].y);
+  }
 }
 
 function main() {
-  update(); // update coordinating values
-  render(); // draw
-  console.log("animation calls main function");
-  requestAnimationFrame(main); // infinite loop
+  // if game is over, stop
+  if (!gameOver) {
+    update(); // update coordinating values
+    render(); // draw
+    console.log("animation calls main function");
+    requestAnimationFrame(main); // infinite loop
+  } else {
+    ctx.drawImage(gameOverImage, 0, 150, canvas.width, 400);
+  }
 }
 
 loadImage();
 setupKeyboardListener();
+createEnemy();
 main();
