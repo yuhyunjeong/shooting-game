@@ -13,6 +13,7 @@ let spaceshipX = canvas.width / 2 - 48; // 200 - 48
 let spaceshipY = canvas.height - 96; // 700 - 96
 
 let gameOver = false;
+let score = 0;
 
 //store fired bullets in array
 let bulletList = [];
@@ -24,6 +25,7 @@ function Bullet() {
     //bullet initialization
     this.x = spaceshipX + 40; //center
     this.y = spaceshipY;
+    this.alive = true;
 
     bulletList.push(this);
   };
@@ -31,7 +33,26 @@ function Bullet() {
   this.update = function () {
     this.y -= 7; //y-coordinate value of bullet is decremented
   };
+
+  this.checkHit = function () {
+    console.log("enemy:", enemyList);
+    // when bullets hit the enemies
+    for (let i = 0; i < enemyList.length; i++) {
+      console.log("enemy:", enemyList[i]);
+      if (
+        this.y <= enemyList[i].y &&
+        this.x >= enemyList[i].x &&
+        this.x <= enemyList[i].x + 64
+      ) {
+        score++; //get 1 point
+        this.alive = false; // bullet die
+        enemyList.splice(i, 1); // enemy disappear
+      }
+    }
+  };
 }
+
+let enemyList = [];
 
 function generateRandomValue(min, max) {
   let randomNum = Math.floor(Math.random() * (max - min + 1) + min); // randomize
@@ -39,8 +60,6 @@ function generateRandomValue(min, max) {
 }
 
 //create enemy
-let enemyList = [];
-
 function Enemy() {
   this.x = 0;
   this.y = 0;
@@ -136,9 +155,14 @@ function update() {
 
   //fire bullet
   for (let i = 0; i < bulletList.length; i++) {
-    bulletList[i].update();
+    if (bulletList[i].alive) {
+      bulletList[i].update();
+      bulletList[i].checkHit();
+      console.log("checkHit!");
+    }
   }
 
+  //create enemy
   for (let i = 0; i < enemyList.length; i++) {
     enemyList[i].update();
   }
@@ -150,7 +174,9 @@ function render() {
   ctx.drawImage(spaceshipImage, spaceshipX, spaceshipY); //image, dx, dy
 
   for (let i = 0; i < bulletList.length; i++) {
-    ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
+    if (bulletList[i].alive) {
+      ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
+    }
   }
 
   for (let i = 0; i < enemyList.length; i++) {
