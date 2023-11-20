@@ -32,9 +32,9 @@
 3. bullet.x >= enemy.x and bullet.x <= enemy.x + enemy.width
 4. get 1 point
 
-
+<p>
 <hr/>
-
+<p>
 
 ## ✅ What I learned
 
@@ -58,6 +58,6 @@
 
 ### requestAnimationFrame
 
-- perform an animation <p>
-  and request that the browser call a specified function 
+- perform an animation
+- request that the browser call a specified function 
 to update an animation before the next repaint.
