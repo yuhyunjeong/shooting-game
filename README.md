@@ -35,17 +35,17 @@
 
 ### canvas and ctx
 
--drawImage
-draws an image, canvas, or video onto the canvas.
+- drawImage
+  draws an image, canvas, or video onto the canvas.
 
--fillText
-draws filled text on the canvas.
+- fillText
+  draws filled text on the canvas.
 
--fillStyle
-sets or returns the color, gradient, or pattern used to fill the drawing.
+- fillStyle
+  sets or returns the color, gradient, or pattern used to fill the drawing.
 
--font
-ets or returns the font properties for canvas text.
+- font
+  ets or returns the font properties for canvas text.
 
 -requestAnimationFrame
 the browser that you wish to perform an animation and requests that the browser call a specified function to update an animation before the next repaint.
