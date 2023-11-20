@@ -29,7 +29,9 @@
 3. bullet.x >= enemy.x and bullet.x <= enemy.x + enemy.width
 4. get 1 point
 
+
 <hr/>
+
 
 ## ✅ What I learned
 
