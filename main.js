@@ -70,7 +70,7 @@ function Enemy() {
     enemyList.push(this);
   };
   this.update = function () {
-    this.y += 1;
+    this.y += 2;
 
     if (this.y >= canvas.height - 64) {
       gameOver = true;
@@ -134,7 +134,7 @@ function createEnemy() {
   const interval = setInterval(function () {
     let e = new Enemy();
     e.init();
-  }, 1000); // The setInterval() method calls a function at specified intervals (in milliseconds). function, times(1000ms = 1 second)
+  }, 500); // The setInterval() method calls a function at specified intervals (in milliseconds). function, times(1000ms = 1 second)
 }
 
 function update() {
@@ -172,6 +172,9 @@ function update() {
 function render() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); //image, dx, dy, dWidth, dHeight
   ctx.drawImage(spaceshipImage, spaceshipX, spaceshipY); //image, dx, dy
+  ctx.fillText("Score : " + score, 20, 40); // text, x, y
+  ctx.fillStyle = "white";
+  ctx.font = "20px Arial";
 
   for (let i = 0; i < bulletList.length; i++) {
     if (bulletList[i].alive) {
