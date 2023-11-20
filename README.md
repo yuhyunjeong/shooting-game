@@ -1,6 +1,6 @@
 # 🚀 space shooting game 🚀
 
-![shooting game recording](https://github.com/yuhyunjeong/shooting-game/assets/88241376/a9026a9a-c126-4a3e-9141-0f6de5011f4d =300x500)
+<img src="https://github.com/yuhyunjeong/shooting-game/assets/88241376/a9026a9a-c126-4a3e-9141-0f6de5011f4d" width="200" height="500"/>
 
 
 ## 💻 Process
