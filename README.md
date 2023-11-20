@@ -1,5 +1,8 @@
 # 🚀 space shooting game 🚀
 
+![shooting game recording](https://github.com/yuhyunjeong/shooting-game/assets/88241376/a9026a9a-c126-4a3e-9141-0f6de5011f4d)
+
+
 ## 💻 Process
 
 ### Controls 🎮
