@@ -54,9 +54,10 @@
 
 - font
 
-  - ets or returns the font properties for canvas text.
+  - sets or returns the font properties for canvas text.
 
 ### requestAnimationFrame
 
-- perform an animation and request that the browser call a specified function 
+- perform an animation <p>
+  and request that the browser call a specified function 
 to update an animation before the next repaint.
