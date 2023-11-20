@@ -36,16 +36,20 @@
 ### canvas and ctx
 
 - drawImage
-  draws an image, canvas, or video onto the canvas.
+
+draws an image, canvas, or video onto the canvas.
 
 - fillText
-  draws filled text on the canvas.
+
+draws filled text on the canvas.
 
 - fillStyle
-  sets or returns the color, gradient, or pattern used to fill the drawing.
+
+sets or returns the color, gradient, or pattern used to fill the drawing.
 
 - font
-  ets or returns the font properties for canvas text.
+
+ets or returns the font properties for canvas text.
 
 ### requestAnimationFrame
 
