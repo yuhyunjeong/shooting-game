@@ -1,6 +1,6 @@
 # 🚀 space shooting game 🚀
 
-you can try it here : https://stunning-fudge-a130bb.netlify.app
+you can try it here! : https://stunning-fudge-a130bb.netlify.app
 
 ![shooting game](https://github.com/yuhyunjeong/shooting-game/assets/88241376/c749ef63-e482-47ea-ac66-7aa52f94173f)
 
