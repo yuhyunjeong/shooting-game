@@ -1,28 +1,28 @@
-# space shooting game 🚀🎮
+# 🚀 space shooting game 🚀
 
-## Process
+## 💻 Process
 
-### Controls
+### Controls 🎮
 
 1. press keyboard arrows key
 2. change the coordinate values of space ship
 3. render again
 
-### Bullet
+### Bullet 🚀
 
 1. pressing space bar fires bullets
 2. y-coordinate value of bullet is decremented
 3. store fired bullets in array
 4. render with the bullet array
 
-### Enemy
+### Enemy 💣
 
 1. randomized enemy location
 2. descend
 3. create one per second
 4. if an enemy reaches the bottom, Game over
 
-### Score
+### Score 🏆
 
 1. if bullets hit the enemies, they disappear
 2. bullet.y >= enemy.x
@@ -31,7 +31,7 @@
 
 <hr/>
 
-## What I learned
+## ✅ What I learned
 
 ### canvas and ctx
 
