@@ -53,4 +53,6 @@
 
 ### requestAnimationFrame
 
-the browser that you wish to perform an animation and requests that the browser call a specified function to update an animation before the next repaint.
+the browser that you wish to perform an animation 
+and requests that the browser call a specified function 
+to update an animation before the next repaint.
