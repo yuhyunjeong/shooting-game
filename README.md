@@ -47,5 +47,6 @@
 - font
   ets or returns the font properties for canvas text.
 
--requestAnimationFrame
+### requestAnimationFrame
+
 the browser that you wish to perform an animation and requests that the browser call a specified function to update an animation before the next repaint.
